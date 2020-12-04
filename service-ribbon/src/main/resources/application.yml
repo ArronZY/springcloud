@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    # 客户端向注册中心发送心跳的时间间隔，（默认30秒）
+    lease-renewal-interval-in-seconds: 1
+    #Eureka注册中心（服务端）在收到客户端心跳之后，等待下一次心跳的超时时间，如果在这个时间内没有收到下次心跳，则移除该客户端。（默认90秒）
+    lease-expiration-duration-in-seconds: 2
+server:
+  port: 8764
+spring:
+  application:
+    name: service-ribbon
+
+  datasource:
+    url: jdbc:sqlserver://192.168.0.87:1433;databaseName=SBSJBC
+    username: sa
+    password: tciss!@#456
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+mybatis:
+  typeAliasesPackage: com.wtkj.springCloud.po
+  mapperLocations: classpath:mapXml/XtUserMapper.xml

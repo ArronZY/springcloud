@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wtkj.springCloud.mapper.XtUserMapper">
+  <resultMap id="BaseResultMap" type="com.wtkj.springCloud.po.XtUser">
+    <id column="Id" jdbcType="CHAR" property="id" />
+    <result column="UserName" jdbcType="NVARCHAR" property="username" />
+    <result column="PassWord" jdbcType="NVARCHAR" property="password" />
+    <result column="LoginName" jdbcType="NVARCHAR" property="loginname" />
+    <result column="Email" jdbcType="NVARCHAR" property="email" />
+    <result column="OfficePhone" jdbcType="NVARCHAR" property="officephone" />
+    <result column="MobilePhone" jdbcType="NVARCHAR" property="mobilephone" />
+    <result column="OrganizationId" jdbcType="CHAR" property="organizationid" />
+    <result column="Position" jdbcType="NVARCHAR" property="position" />
+    <result column="Sex" jdbcType="INTEGER" property="sex" />
+    <result column="LawNO" jdbcType="NVARCHAR" property="lawno" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="ChargePerson" jdbcType="NVARCHAR" property="chargeperson" />
+    <result column="BusinessLicenseNum" jdbcType="NVARCHAR" property="businesslicensenum" />
+    <result column="Address" jdbcType="NVARCHAR" property="address" />
+    <result column="OrgName" jdbcType="NVARCHAR" property="orgname" />
+    <result column="IdCard" jdbcType="NVARCHAR" property="idcard" />
+    <result column="OfficeId" jdbcType="CHAR" property="officeid" />
+    <result column="createBy" jdbcType="VARCHAR" property="createby" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="updateBy" jdbcType="VARCHAR" property="updateby" />
+    <result column="updateDate" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="delFlag" jdbcType="CHAR" property="delflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, UserName, PassWord, LoginName, Email, OfficePhone, MobilePhone, OrganizationId, 
+    Position, Sex, LawNO, Status, ChargePerson, BusinessLicenseNum, Address, OrgName, 
+    IdCard, OfficeId, createBy, createDate, updateBy, updateDate, remarks, delFlag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from XT_User
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <select id="selectAllList"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from XT_User
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from XT_User
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wtkj.springCloud.po.XtUser">
+    insert into XT_User (Id, UserName, PassWord, 
+      LoginName, Email, OfficePhone, 
+      MobilePhone, OrganizationId, Position, 
+      Sex, LawNO, Status, 
+      ChargePerson, BusinessLicenseNum, Address, 
+      OrgName, IdCard, OfficeId, 
+      createBy, createDate, updateBy, 
+      updateDate, remarks, delFlag
+      )
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=NVARCHAR}, #{password,jdbcType=NVARCHAR}, 
+      #{loginname,jdbcType=NVARCHAR}, #{email,jdbcType=NVARCHAR}, #{officephone,jdbcType=NVARCHAR}, 
+      #{mobilephone,jdbcType=NVARCHAR}, #{organizationid,jdbcType=CHAR}, #{position,jdbcType=NVARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{lawno,jdbcType=NVARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{chargeperson,jdbcType=NVARCHAR}, #{businesslicensenum,jdbcType=NVARCHAR}, #{address,jdbcType=NVARCHAR}, 
+      #{orgname,jdbcType=NVARCHAR}, #{idcard,jdbcType=NVARCHAR}, #{officeid,jdbcType=CHAR}, 
+      #{createby,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delflag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wtkj.springCloud.po.XtUser">
+    insert into XT_User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="password != null">
+        PassWord,
+      </if>
+      <if test="loginname != null">
+        LoginName,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="officephone != null">
+        OfficePhone,
+      </if>
+      <if test="mobilephone != null">
+        MobilePhone,
+      </if>
+      <if test="organizationid != null">
+        OrganizationId,
+      </if>
+      <if test="position != null">
+        Position,
+      </if>
+      <if test="sex != null">
+        Sex,
+      </if>
+      <if test="lawno != null">
+        LawNO,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="chargeperson != null">
+        ChargePerson,
+      </if>
+      <if test="businesslicensenum != null">
+        BusinessLicenseNum,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="orgname != null">
+        OrgName,
+      </if>
+      <if test="idcard != null">
+        IdCard,
+      </if>
+      <if test="officeid != null">
+        OfficeId,
+      </if>
+      <if test="createby != null">
+        createBy,
+      </if>
+      <if test="createdate != null">
+        createDate,
+      </if>
+      <if test="updateby != null">
+        updateBy,
+      </if>
+      <if test="updatedate != null">
+        updateDate,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="delflag != null">
+        delFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=NVARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=NVARCHAR},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="officephone != null">
+        #{officephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="mobilephone != null">
+        #{mobilephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="organizationid != null">
+        #{organizationid,jdbcType=CHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=NVARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="lawno != null">
+        #{lawno,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="chargeperson != null">
+        #{chargeperson,jdbcType=NVARCHAR},
+      </if>
+      <if test="businesslicensenum != null">
+        #{businesslicensenum,jdbcType=NVARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgname != null">
+        #{orgname,jdbcType=NVARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=NVARCHAR},
+      </if>
+      <if test="officeid != null">
+        #{officeid,jdbcType=CHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        #{delflag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wtkj.springCloud.po.XtUser">
+    update XT_User
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=NVARCHAR},
+      </if>
+      <if test="password != null">
+        PassWord = #{password,jdbcType=NVARCHAR},
+      </if>
+      <if test="loginname != null">
+        LoginName = #{loginname,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="officephone != null">
+        OfficePhone = #{officephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="mobilephone != null">
+        MobilePhone = #{mobilephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="organizationid != null">
+        OrganizationId = #{organizationid,jdbcType=CHAR},
+      </if>
+      <if test="position != null">
+        Position = #{position,jdbcType=NVARCHAR},
+      </if>
+      <if test="sex != null">
+        Sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="lawno != null">
+        LawNO = #{lawno,jdbcType=NVARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="chargeperson != null">
+        ChargePerson = #{chargeperson,jdbcType=NVARCHAR},
+      </if>
+      <if test="businesslicensenum != null">
+        BusinessLicenseNum = #{businesslicensenum,jdbcType=NVARCHAR},
+      </if>
+      <if test="address != null">
+        Address = #{address,jdbcType=NVARCHAR},
+      </if>
+      <if test="orgname != null">
+        OrgName = #{orgname,jdbcType=NVARCHAR},
+      </if>
+      <if test="idcard != null">
+        IdCard = #{idcard,jdbcType=NVARCHAR},
+      </if>
+      <if test="officeid != null">
+        OfficeId = #{officeid,jdbcType=CHAR},
+      </if>
+      <if test="createby != null">
+        createBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        updateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        updateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null">
+        delFlag = #{delflag,jdbcType=CHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wtkj.springCloud.po.XtUser">
+    update XT_User
+    set UserName = #{username,jdbcType=NVARCHAR},
+      PassWord = #{password,jdbcType=NVARCHAR},
+      LoginName = #{loginname,jdbcType=NVARCHAR},
+      Email = #{email,jdbcType=NVARCHAR},
+      OfficePhone = #{officephone,jdbcType=NVARCHAR},
+      MobilePhone = #{mobilephone,jdbcType=NVARCHAR},
+      OrganizationId = #{organizationid,jdbcType=CHAR},
+      Position = #{position,jdbcType=NVARCHAR},
+      Sex = #{sex,jdbcType=INTEGER},
+      LawNO = #{lawno,jdbcType=NVARCHAR},
+      Status = #{status,jdbcType=INTEGER},
+      ChargePerson = #{chargeperson,jdbcType=NVARCHAR},
+      BusinessLicenseNum = #{businesslicensenum,jdbcType=NVARCHAR},
+      Address = #{address,jdbcType=NVARCHAR},
+      OrgName = #{orgname,jdbcType=NVARCHAR},
+      IdCard = #{idcard,jdbcType=NVARCHAR},
+      OfficeId = #{officeid,jdbcType=CHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      updateBy = #{updateby,jdbcType=VARCHAR},
+      updateDate = #{updatedate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      delFlag = #{delflag,jdbcType=CHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
